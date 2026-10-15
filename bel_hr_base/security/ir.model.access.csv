@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bel_hr_employment_category_user,bel.hr.employment.category user,model_bel_hr_employment_category,base.group_user,1,0,0,0
+access_bel_hr_employee_grade_user,bel.hr.employee.grade user,model_bel_hr_employee_grade,base.group_user,1,0,0,0
+

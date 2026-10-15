@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_bel_hr_employee_history_company" model="ir.rule">
+        <field name="name">Employee History: Allowed Companies</field>
+        <field name="model_id" ref="model_bel_hr_employee_history"/>
+        <field name="domain_force">
+            [('employee_id.company_id', 'in', company_ids)]
+        </field>
+    </record>
+</odoo>

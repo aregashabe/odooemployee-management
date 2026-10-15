@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_contract_template_beltech" model="ir.ui.view">
+        <field name="name">hr.contract.template.form.beltech</field>
+        <field name="model">hr.version</field>
+        <field name="inherit_id" ref="hr.hr_contract_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                
+<group string="BelTech Employment Information">
+    <field name="bel_employment_category_id"/>
+    <field name="bel_probation_start_date"/>
+    <field name="trial_date_end"/>
+    <field name="bel_pension_eligible"/>
+    <field name="bel_pension_scheme"
+           invisible="not bel_pension_eligible"/>
+    <field name="bel_contract_reference"/>
+
+    <separator string="Compensation and Benefits"/>
+    <field name="bel_allowance_amount"/>
+    <field name="bel_allowance_details"/>
+    <field name="bel_benefits"/>
+    <field name="bel_compensation_terms"/>
+
+    <separator string="Working Schedule"/>
+    <field name="resource_calendar_id"/>
+    
+<button name="action_bel_prepare_renewal"
+        type="object"
+        string="Prepare Renewal"
+        class="btn-primary"/>
+        
+                    <separator string="Contract Approval"/>
+
+                    <field name="bel_approval_state" readonly="1"/>
+                    <field name="bel_submitted_by" readonly="1"/>
+                    <field name="bel_submitted_on" readonly="1"/>
+                    <field name="bel_approved_by" readonly="1"/>
+                    <field name="bel_approved_on" readonly="1"/>
+
+                    <field name="bel_rejection_reason"
+                           groups="hr.group_hr_manager"
+                           invisible="bel_approval_state not in ['pending', 'rejected']"
+                           readonly="bel_approval_state != 'pending'"/>
+
+                    <button name="action_bel_submit_for_approval"
+                            type="object"
+                            string="Submit for Approval"
+                            class="btn-primary"
+                            groups="hr.group_hr_user"
+                            invisible="bel_approval_state not in ['draft', 'rejected']"/>
+
+                    <button name="action_bel_approve_contract"
+                            type="object"
+                            string="Approve Contract"
+                            class="btn-primary"
+                            groups="hr.group_hr_manager"
+                            invisible="bel_approval_state != 'pending'"/>
+
+                    <button name="action_bel_reject_contract"
+                            type="object"
+                            string="Reject Contract"
+                            class="btn-secondary"
+                            groups="hr.group_hr_manager"
+                            invisible="bel_approval_state != 'pending'"/>
+
+
+</group>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

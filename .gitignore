@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.log
+bel_hr_employee_backup_20261013/

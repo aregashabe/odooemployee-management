@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_beltech" model="ir.ui.view">
+        <field name="name">hr.employee.form.beltech</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Ethiopian Information">
+
+                    <group string="Employee Identification">
+                        <field name="ethiopian_employee_id"/>
+                        <field name="ethiopian_tax_id"/>
+                    </group>
+
+                    <group string="Employment Information">
+                        <field name="employment_category_id"/>
+                        <field name="employee_grade_id"/>
+                        <field name="ethiopian_employment_start_date"/>
+                        <field name="original_joining_date"/>
+                    </group>
+
+                    <group string="Probation Information">
+                        <field name="probation_start_date"/>
+                        <field name="probation_end_date"/>
+                    </group>
+
+                    <group string="Pension Information">
+                        <field name="pension_eligible"/>
+                        <field name="pension_scheme"
+                               invisible="not pension_eligible"/>
+                    </group>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

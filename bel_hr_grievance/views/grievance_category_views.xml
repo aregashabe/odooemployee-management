@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bel_hr_grievance_category_tree" model="ir.ui.view">
+        <field name="name">bel.hr.grievance.category.list</field>
+        <field name="model">bel.hr.grievance.category</field>
+        <field name="arch" type="xml">
+            <list string="Grievance Categories">
+                <field name="name"/>
+                <field name="severity"/>
+                <field name="confidentiality_level"/>
+                <field name="expected_response_days"/>
+                <field name="expected_resolution_days"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bel_hr_grievance_category_form" model="ir.ui.view">
+        <field name="name">bel.hr.grievance.category.form</field>
+        <field name="model">bel.hr.grievance.category</field>
+        <field name="arch" type="xml">
+            <form string="Grievance Category">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="severity"/>
+                            <field name="confidentiality_level"/>
+                        </group>
+                        <group>
+                            <field name="expected_response_days"/>
+                            <field name="expected_resolution_days"/>
+                            <field name="responsible_team_id"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bel_hr_grievance_category" model="ir.actions.act_window">
+        <field name="name">Complaint Categories</field>
+        <field name="res_model">bel.hr.grievance.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

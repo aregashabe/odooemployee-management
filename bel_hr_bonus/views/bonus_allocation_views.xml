@@ -1,0 +1,62 @@
+<odoo>
+    <record id="view_bel_bonus_allocation_tree" model="ir.ui.view">
+        <field name="name">bel.bonus.allocation.tree</field>
+        <field name="model">bel.bonus.allocation</field>
+        <field name="arch" type="xml">
+            <list string="Bonus Allocations">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="bonus_type_id"/>
+                <field name="bonus_period"/>
+                <field name="approved_amount"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bel_bonus_allocation_form" model="ir.ui.view">
+        <field name="name">bel.bonus.allocation.form</field>
+        <field name="model">bel.bonus.allocation</field>
+        <field name="arch" type="xml">
+            <form string="Bonus Allocation">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_manager_approve" string="Manager Approve" type="object" invisible="state != 'submitted'" class="oe_highlight"/>
+                    <button name="action_hr_approve" string="HR Approve" type="object" invisible="state != 'manager_approved'" class="oe_highlight"/>
+                    <button name="action_finance_approve" string="Finance Approve" type="object" invisible="state != 'hr_approved'" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state not in ('draft', 'submitted', 'manager_approved', 'hr_approved', 'payroll_ready')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,manager_approved,hr_approved,payroll_ready,paid"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="employee_id"/>
+                            <field name="department_id"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="bonus_type_id"/>
+                            <field name="policy_id"/>
+                            <field name="bonus_period"/>
+                            <field name="calculation_method"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="calculated_amount"/>
+                        <field name="approved_amount"/>
+                        <field name="reason"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bel_bonus_allocation" model="ir.actions.act_window">
+        <field name="name">Bonus Allocations</field>
+        <field name="res_model">bel.bonus.allocation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Root App Menu visible to all bonus users -->
+    <menuitem id="menu_bel_bonus_root"
+              name="Bonuses &amp; Incentives"
+              sequence="75"
+              groups="bel_hr_bonus.group_bel_bonus_employee,bel_hr_bonus.group_bel_bonus_manager,bel_hr_bonus.group_bel_bonus_admin"/>
+
+    <!-- Bonus Allocations (Visible to Employees, Managers, and Admins) -->
+    <menuitem id="menu_bel_bonus_allocation"
+              name="Bonus Allocations"
+              parent="menu_bel_bonus_root"
+              action="action_bel_bonus_allocation"
+              groups="bel_hr_bonus.group_bel_bonus_employee,bel_hr_bonus.group_bel_bonus_manager,bel_hr_bonus.group_bel_bonus_admin"
+              sequence="10"/>
+
+    <!-- Bonus Policies (Visible ONLY to Admins) -->
+    <menuitem id="menu_bel_bonus_policy"
+              name="Bonus Policies"
+              parent="menu_bel_bonus_root"
+              action="action_bel_bonus_policy"
+              groups="bel_hr_bonus.group_bel_bonus_admin"
+              sequence="20"/>
+
+    <!-- Bonus Types (Visible ONLY to Admins) -->
+    <menuitem id="menu_bel_bonus_type"
+              name="Bonus Types"
+              parent="menu_bel_bonus_root"
+              action="action_bel_bonus_type"
+              groups="bel_hr_bonus.group_bel_bonus_admin"
+              sequence="30"/>
+</odoo>

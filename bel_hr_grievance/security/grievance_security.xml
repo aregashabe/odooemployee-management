@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- User Group -->
+    <record id="group_grievance_user" model="res.groups">
+        <field name="name">Grievance User</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Manager Group -->
+    <record id="group_grievance_manager" model="res.groups">
+        <field name="name">Grievance Manager</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+        <field name="implied_ids" eval="[(4, ref('group_grievance_user'))]"/>
+    </record>
+</odoo>

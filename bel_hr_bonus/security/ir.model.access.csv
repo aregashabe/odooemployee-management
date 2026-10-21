@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bel_bonus_type_admin,bel.bonus.type admin,model_bel_bonus_type,bel_hr_bonus.group_bel_bonus_admin,1,1,1,1
+access_bel_bonus_policy_admin,bel.bonus.policy admin,model_bel_bonus_policy,bel_hr_bonus.group_bel_bonus_admin,1,1,1,1
+access_bel_bonus_allocation_admin,bel.bonus.allocation admin,model_bel_bonus_allocation,bel_hr_bonus.group_bel_bonus_admin,1,1,1,1
+access_bel_bonus_allocation_manager,bel.bonus.allocation manager,model_bel_bonus_allocation,bel_hr_bonus.group_bel_bonus_manager,1,1,1,0
+access_bel_bonus_allocation_employee,bel.bonus.allocation employee,model_bel_bonus_allocation,bel_hr_bonus.group_bel_bonus_employee,1,0,0,0

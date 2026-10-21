@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bel_hr_grievance_investigation_tree" model="ir.ui.view">
+        <field name="name">bel.hr.grievance.investigation.list</field>
+        <field name="model">bel.hr.grievance.investigation</field>
+        <field name="arch" type="xml">
+            <list string="Investigation Entries">
+                <field name="activity_date"/>
+                <field name="case_id"/>
+                <field name="investigator_id"/>
+                <field name="activity_type"/>
+                <field name="summary"/>
+                <field name="is_confidential"/>
+            </list>
+        </field>
+    </record>
+</odoo>

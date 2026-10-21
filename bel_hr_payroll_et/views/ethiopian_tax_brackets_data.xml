@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="tax_bracket_1" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 1 (0 - 600 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">0.0</field>
+            <field name="upper_bound">600.0</field>
+            <field name="tax_rate">0.0</field>
+            <field name="deduction_amount">0.0</field>
+        </record>
+        <record id="tax_bracket_2" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 2 (601 - 1,650 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">600.01</field>
+            <field name="upper_bound">1650.0</field>
+            <field name="tax_rate">10.0</field>
+            <field name="deduction_amount">60.0</field>
+        </record>
+        <record id="tax_bracket_3" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 3 (1,651 - 3,200 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">1650.01</field>
+            <field name="upper_bound">3200.0</field>
+            <field name="tax_rate">15.0</field>
+            <field name="deduction_amount">142.50</field>
+        </record>
+        <record id="tax_bracket_4" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 4 (3,201 - 5,250 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">3200.01</field>
+            <field name="upper_bound">5250.0</field>
+            <field name="tax_rate">20.0</field>
+            <field name="deduction_amount">302.50</field>
+        </record>
+        <record id="tax_bracket_5" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 5 (5,251 - 7,800 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">5250.01</field>
+            <field name="upper_bound">7800.0</field>
+            <field name="tax_rate">25.0</field>
+            <field name="deduction_amount">565.00</field>
+        </record>
+        <record id="tax_bracket_6" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 6 (7,801 - 10,900 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">7800.01</field>
+            <field name="upper_bound">10900.0</field>
+            <field name="tax_rate">30.0</field>
+            <field name="deduction_amount">955.00</field>
+        </record>
+        <record id="tax_bracket_7" model="ethiopian.tax.bracket">
+            <field name="name">Bracket 7 (Over 10,900 ETB)</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="lower_bound">10900.01</field>
+            <field name="tax_rate">35.0</field>
+            <field name="deduction_amount">1500.00</field>
+        </record>
+    </data>
+</odoo>

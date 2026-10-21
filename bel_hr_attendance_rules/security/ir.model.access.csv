@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bel_hr_attendance_rule_user,bel.hr.attendance.rule user,bel_hr_attendance_rules.model_bel_hr_attendance_rule,base.group_user,1,1,1,1
+access_bel_hr_attendance_rule_manager,bel.hr.attendance.rule manager,bel_hr_attendance_rules.model_bel_hr_attendance_rule,hr.group_hr_manager,1,1,1,1

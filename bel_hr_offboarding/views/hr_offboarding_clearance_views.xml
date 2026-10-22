@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_offboarding_clearance_list" model="ir.ui.view">
+        <field name="name">hr.offboarding.clearance.list</field>
+        <field name="model">hr.offboarding.clearance</field>
+        <field name="arch" type="xml">
+            <list string="Departmental Clearances" editable="bottom">
+                <field name="request_id"/>
+                <field name="department_name"/>
+                <field name="responsible_user_id"/>
+                <field name="status"/>
+                <field name="completion_date"/>
+            </list>
+        </field>
+    </record>
+</odoo>

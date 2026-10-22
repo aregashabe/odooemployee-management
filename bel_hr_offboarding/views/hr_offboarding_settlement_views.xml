@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_offboarding_settlement_form" model="ir.ui.view">
+        <field name="name">hr.offboarding.settlement.form</field>
+        <field name="model">hr.offboarding.settlement</field>
+        <field name="arch" type="xml">
+            <form string="Final Settlement Calculation">
+                <header>
+                    <button name="action_compute_settlement" string="Recalculate Amounts" type="object" class="btn-primary" invisible="state == 'approved'"/>
+                    <button name="action_approve_settlement" string="Approve &amp; Lock" type="object" class="btn-success" invisible="state == 'approved'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,calculated,approved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Employee Information">
+                            <field name="employee_id" readonly="1"/>
+                            <field name="request_id" readonly="1"/>
+                            <field name="basic_salary"/>
+                            <field name="service_years"/>
+                        </group>
+                        <group string="Summary Breakdown">
+                            <field name="total_gross" widget="monetary"/>
+                            <field name="total_deductions" widget="monetary"/>
+                            <field name="net_settlement" widget="monetary" class="oe_subtotal_footer_separator"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Gross Earnings">
+                            <group>
+                                <field name="unpaid_salary"/>
+                                <field name="leave_encashment_amount"/>
+                                <field name="severance_amount"/>
+                                <field name="other_earnings"/>
+                            </group>
+                        </page>
+                        <page string="Deductions">
+                            <group>
+                                <field name="income_tax_deduction"/>
+                                <field name="pension_deduction"/>
+                                <field name="loan_deduction"/>
+                                <field name="asset_deduction"/>
+                                <field name="other_deductions"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

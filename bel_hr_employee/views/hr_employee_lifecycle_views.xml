@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_bel_lifecycle" model="ir.ui.view">
+        <field name="name">hr.employee.form.bel.lifecycle</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Lifecycle &amp; Suspension">
+                    <group>
+                        <field name="bel_lifecycle_status"
+                               readonly="True"/>
+                    </group>
+
+                    <group string="Suspension Information"
+                           groups="hr.group_hr_manager">
+                        <field name="bel_suspension_start_date"/>
+                        <field name="bel_suspension_end_date"/>
+                        <field name="bel_suspension_reason"/>
+                        <field name="bel_suspended_by"
+                               readonly="True"/>
+                        <field name="bel_suspension_recorded_on"
+                               readonly="True"/>
+                    </group>
+
+                    <group groups="hr.group_hr_manager">
+                        <button name="action_bel_suspend_employee"
+                                type="object"
+                                string="Suspend Employee"
+                                class="btn-primary"
+                                invisible="bel_lifecycle_status == 'suspended' or bel_lifecycle_status == 'departed' or bel_lifecycle_status == 'archived'"/>
+
+                        <button name="action_bel_end_suspension"
+                                type="object"
+                                string="End Suspension"
+                                invisible="bel_lifecycle_status != 'suspended'"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

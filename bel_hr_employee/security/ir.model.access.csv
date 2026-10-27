@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bel_hr_employee_history_user,bel.hr.employee.history user,model_bel_hr_employee_history,hr.group_hr_user,1,0,1,0
+access_bel_hr_employee_history_manager,bel.hr.employee.history manager,model_bel_hr_employee_history,hr.group_hr_manager,1,0,1,0

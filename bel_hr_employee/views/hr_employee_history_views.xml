@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bel_hr_employee_history_list" model="ir.ui.view">
+        <field name="name">bel.hr.employee.history.list</field>
+        <field name="model">bel.hr.employee.history</field>
+        <field name="arch" type="xml">
+            <list string="Employee History">
+                <field name="employee_id"/>
+                <field name="change_type"/>
+                <field name="effective_date"/>
+                <field name="previous_value"/>
+                <field name="new_value"/>
+                <field name="approved_by"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bel_hr_employee_history_form" model="ir.ui.view">
+        <field name="name">bel.hr.employee.history.form</field>
+        <field name="model">bel.hr.employee.history</field>
+        <field name="arch" type="xml">
+            <form string="Employee History">
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="change_type"/>
+                        <field name="effective_date"/>
+                        <field name="previous_value"/>
+                        <field name="new_value"/>
+                        <field name="reason"/>
+                        <field name="approved_by" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bel_hr_employee_history" model="ir.actions.act_window">
+        <field name="name">Employee History</field>
+        <field name="res_model">bel.hr.employee.history</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_bel_hr_employee_history"
+        name="Employee History"
+        parent="hr.menu_hr_root"
+        action="action_bel_hr_employee_history"
+        sequence="80"
+        groups="hr.group_hr_user"
+    />
+</odoo>

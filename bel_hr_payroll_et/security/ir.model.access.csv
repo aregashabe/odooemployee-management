@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ethiopian_tax_bracket_user,ethiopian.tax.bracket.user,model_ethiopian_tax_bracket,base.group_user,1,0,0,0
+access_ethiopian_tax_bracket_manager,ethiopian.tax.bracket.manager,model_ethiopian_tax_bracket,base.group_system,1,1,1,1
+access_ethiopian_pension_config_user,ethiopian.pension.config.user,model_ethiopian_pension_config,base.group_user,1,0,0,0
+access_ethiopian_pension_config_manager,ethiopian.pension.config.manager,model_ethiopian_pension_config,base.group_system,1,1,1,1

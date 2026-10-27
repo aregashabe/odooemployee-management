@@ -1,0 +1,27 @@
+<odoo>
+    <data noupdate="0">
+
+        <!-- Employee Group (Read-Only) -->
+        <record id="group_bel_bonus_employee" model="res.groups">
+            <field name="name">Bonus / Employee (Read Only)</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Manager Group -->
+        <record id="group_bel_bonus_manager" model="res.groups">
+            <field name="name">Bonus / Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('group_bel_bonus_employee'))]"/>
+        </record>
+
+        <!-- Admin Group (Explicitly includes Administrator) -->
+        <record id="group_bel_bonus_admin" model="res.groups">
+            <field name="name">Bonus / Administrator</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('group_bel_bonus_manager'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

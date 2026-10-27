@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_final_settlement_document">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2 class="text-center">BelTech Ethiopian HRMS</h2>
+                    <h3 class="text-center">Final Settlement Statement</h3>
+                    <hr/>
+                    <table class="table table-bordered mt-4">
+                        <tr>
+                            <td><strong>Employee Name:</strong></td>
+                            <td><span t-field="doc.employee_id.name"/></td>
+                            <td><strong>Reference:</strong></td>
+                            <td><span t-field="doc.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Department:</strong></td>
+                            <td><span t-field="doc.employee_id.department_id.name"/></td>
+                            <td><strong>Service Duration:</strong></td>
+                            <td><span t-field="doc.service_years"/> Years</td>
+                        </tr>
+                    </table>
+
+                    <h4 class="mt-4">1. Gross Earnings</h4>
+                    <table class="table table-sm">
+                        <tr><td>Basic Salary:</td><td class="text-end"><span t-field="doc.basic_salary"/></td></tr>
+                        <tr><td>Unpaid Salary:</td><td class="text-end"><span t-field="doc.unpaid_salary"/></td></tr>
+                        <tr><td>Unused Leave Encashment:</td><td class="text-end"><span t-field="doc.leave_encashment_amount"/></td></tr>
+                        <tr><td>Statutory Severance:</td><td class="text-end"><span t-field="doc.severance_amount"/></td></tr>
+                        <tr class="table-active"><td><strong>Total Gross:</strong></td><td class="text-end"><strong><span t-field="doc.total_gross"/></strong></td></tr>
+                    </table>
+
+                    <h4 class="mt-4">2. Deductions</h4>
+                    <table class="table table-sm">
+                        <tr><td>Employment Tax:</td><td class="text-end"><span t-field="doc.income_tax_deduction"/></td></tr>
+                        <tr><td>Loan Recovery:</td><td class="text-end"><span t-field="doc.loan_deduction"/></td></tr>
+                        <tr><td>Asset Damages/Loss:</td><td class="text-end"><span t-field="doc.asset_deduction"/></td></tr>
+                        <tr class="table-active"><td><strong>Total Deductions:</strong></td><td class="text-end"><strong><span t-field="doc.total_deductions"/></strong></td></tr>
+                    </table>
+
+                    <div class="mt-4 p-3 bg-light border">
+                        <h4>Net Settlement Payable: <span t-field="doc.net_settlement" class="float-end"/></h4>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

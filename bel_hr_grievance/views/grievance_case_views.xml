@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- WINDOW ACTIONS -->
+    <record id="action_bel_hr_grievance_case" model="ir.actions.act_window">
+        <field name="name">Cases</field>
+        <field name="res_model">bel.hr.grievance.case</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bel_hr_grievance_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">bel.hr.grievance.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bel_hr_grievance_stage" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="res_model">bel.hr.grievance.stage</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENU STRUCTURE (No group restrictions) -->
+    <menuitem id="menu_bel_hr_grievance_root" 
+              name="Grievances" 
+              sequence="75"/>
+
+    <menuitem id="menu_bel_hr_grievance_cases" 
+              name="Cases" 
+              parent="menu_bel_hr_grievance_root" 
+              action="action_bel_hr_grievance_case" 
+              sequence="10"/>
+
+    <menuitem id="menu_bel_hr_grievance_config" 
+              name="Configuration" 
+              parent="menu_bel_hr_grievance_root" 
+              sequence="100"/>
+
+    <menuitem id="menu_bel_hr_grievance_categories" 
+              name="Categories" 
+              parent="menu_bel_hr_grievance_config" 
+              action="action_bel_hr_grievance_category" 
+              sequence="10"/>
+
+    <menuitem id="menu_bel_hr_grievance_stages" 
+              name="Stages" 
+              parent="menu_bel_hr_grievance_config" 
+              action="action_bel_hr_grievance_stage" 
+              sequence="20"/>
+
+</odoo>

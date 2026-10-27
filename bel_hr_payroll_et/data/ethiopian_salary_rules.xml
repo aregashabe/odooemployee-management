@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Salary Structure Category -->
+        <record id="ET_SALARY_RULE_CATEGORY" model="hr.salary.rule.category">
+            <field name="name">Ethiopian Payroll Rules</field>
+            <field name="code">ET_PAYROLL</field>
+        </record>
+
+        <!-- 1. Basic Salary Rule -->
+        <record id="hr_salary_rule_et_basic" model="hr.salary.rule">
+            <field name="name">Basic Salary</field>
+            <field name="code">BASIC</field>
+            <field name="category_id" ref="hr_payroll_community.BASIC"/>
+            <field name="sequence">1</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage</field>
+        </record>
+
+        <!-- 2. Gross Salary Rule -->
+        <record id="hr_salary_rule_et_gross" model="hr.salary.rule">
+            <field name="name">Gross Salary</field>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll_community.GROSS"/>
+            <field name="sequence">100</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
+        </record>
+
+        <!-- 3. Employee Pension (7%) -->
+        <record id="hr_salary_rule_et_pension_emp" model="hr.salary.rule">
+            <field name="name">Employee Pension (7%)</field>
+            <field name="code">PENSION_EMP</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="sequence">110</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pension_conf = env['ethiopian.pension.config'].search([
+    ('company_id', '=', payslip.company_id.id),
+    ('active', '=', True)
+], limit=1)
+rate = pension_conf.employee_rate if pension_conf else 7.0
+result = - (categories.BASIC * (rate / 100.0))
+            </field>
+        </record>
+
+        <!-- 4. Employer Pension (11%) -->
+        <record id="hr_salary_rule_et_pension_comp" model="hr.salary.rule">
+            <field name="name">Employer Pension (11%)</field>
+            <field name="code">PENSION_COMP</field>
+            <field name="category_id" ref="hr_payroll_community.COMP"/>
+            <field name="sequence">115</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+pension_conf = env['ethiopian.pension.config'].search([
+    ('company_id', '=', payslip.company_id.id),
+    ('active', '=', True)
+], limit=1)
+rate = pension_conf.employer_rate if pension_conf else 11.0
+result = categories.BASIC * (rate / 100.0)
+            </field>
+        </record>
+
+        <!-- 5. Taxable Income -->
+        <record id="hr_salary_rule_et_taxable_income" model="hr.salary.rule">
+            <field name="name">Taxable Income</field>
+            <field name="code">TAXABLE</field>
+            <field name="category_id" ref="hr_payroll_community.ALW"/>
+            <field name="sequence">120</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.GROSS + PENSION_EMP
+            </field>
+        </record>
+
+        <!-- 6. Employment Income Tax -->
+        <record id="hr_salary_rule_et_tax" model="hr.salary.rule">
+            <field name="name">Employment Income Tax</field>
+            <field name="code">TAX</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="sequence">150</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+taxable_income = categories.TAXABLE
+bracket = env['ethiopian.tax.bracket'].search([
+    ('company_id', '=', payslip.company_id.id),
+    ('lower_bound', '&lt;=', taxable_income),
+    '|', ('upper_bound', '&gt;=', taxable_income), ('upper_bound', '=', 0.0)
+], limit=1)
+
+if bracket:
+    calculated_tax = (taxable_income * (bracket.tax_rate / 100.0)) - bracket.deduction_amount
+    result = - max(0.0, calculated_tax)
+else:
+    result = 0.0
+            </field>
+        </record>
+
+        <!-- 7. Net Salary -->
+        <record id="hr_salary_rule_et_net" model="hr.salary.rule">
+            <field name="name">Net Salary</field>
+            <field name="code">NET</field>
+            <field name="category_id" ref="hr_payroll_community.NET"/>
+            <field name="sequence">200</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.GROSS + categories.DED</field>
+        </record>
+
+    </data>
+</odoo>

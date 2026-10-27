@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- 1. Custom Security Category -->
+        <record id="module_category_offboarding" model="ir.module.category">
+            <field name="name">Offboarding </field>
+            <field name="description">Permissions for Offboarding and Final Settlement</field>
+            <field name="sequence">16</field>
+        </record>
+
+        <!-- 2. Odoo 19 Privilege Group -->
+        <record id="privilege_offboarding" model="res.groups.privilege">
+            <field name="name">Offboarding </field>
+            <field name="category_id" ref="module_category_offboarding"/>
+        </record>
+
+        <!-- 3. Security Access Groups -->
+        <record id="group_offboarding_user" model="res.groups">
+            <field name="name">Officer</field>
+            <field name="privilege_id" ref="privilege_offboarding"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_offboarding_manager" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="privilege_id" ref="privilege_offboarding"/>
+            <field name="implied_ids" eval="[(4, ref('group_offboarding_user'))]"/>
+        </record>
+
+        <!-- Grant Administrator privilege to System Admin -->
+        <record id="base.group_system" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('group_offboarding_manager'))]"/>
+        </record>
+
+        <!-- 4. Multi-Company Record Rules -->
+        <record id="hr_offboarding_request_comp_rule" model="ir.rule">
+            <field name="name">Offboarding Request Multi-Company Rule</field>
+            <field name="model_id" ref="model_hr_offboarding_request"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="hr_offboarding_request_emp_rule" model="ir.rule">
+            <field name="name">Employee Personal Offboarding Requests</field>
+            <field name="model_id" ref="model_hr_offboarding_request"/>
+            <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="hr_offboarding_request_officer_rule" model="ir.rule">
+            <field name="name">Officer All Offboarding Requests</field>
+            <field name="model_id" ref="model_hr_offboarding_request"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_offboarding_user'))]"/>
+        </record>
+    </data>
+</odoo>

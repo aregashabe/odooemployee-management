@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_offboarding_exit_interview_form" model="ir.ui.view">
+        <field name="name">hr.offboarding.exit.interview.form</field>
+        <field name="model">hr.offboarding.exit.interview</field>
+        <field name="arch" type="xml">
+            <form string="Exit Interview Record">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="request_id"/>
+                            <field name="interview_date"/>
+                            <field name="interviewer_id"/>
+                        </group>
+                        <group>
+                            <field name="primary_reason"/>
+                            <field name="recommend_company"/>
+                        </group>
+                    </group>
+                    <group string="Detailed Feedback">
+                        <field name="feedback_positive" placeholder="Positive Feedback..."/>
+                        <field name="feedback_improvement" placeholder="Areas of Improvement..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

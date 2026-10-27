@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <record id="standard_ethiopian_pension" model="ethiopian.pension.config">
+            <field name="name">Standard Private Sector Pension (7% / 11%)</field>
+            <field name="date_from">2024-01-01</field>
+            <field name="employee_rate">7.0</field>
+            <field name="employer_rate">11.0</field>
+        </record>
+    </data>
+</odoo>

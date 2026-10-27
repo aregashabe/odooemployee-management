@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bel_hr_grievance_stage_tree" model="ir.ui.view">
+        <field name="name">bel.hr.grievance.stage.list</field>
+        <field name="model">bel.hr.grievance.stage</field>
+        <field name="arch" type="xml">
+            <list string="Grievance Stages" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="stage_type"/>
+                <field name="is_closed"/>
+                <field name="fold"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_bel_hr_grievance_stage" model="ir.actions.act_window">
+        <field name="name">Grievance Stages</field>
+        <field name="res_model">bel.hr.grievance.stage</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate="1">
+        <record id="bonus_type_performance" model="bel.bonus.type">
+            <field name="name">Performance Bonus</field>
+            <field name="code">PERF_BONUS</field>
+            <field name="category">performance</field>
+            <field name="description">Bonus based on finalized performance appraisal scores.</field>
+        </record>
+        <record id="bonus_type_annual" model="bel.bonus.type">
+            <field name="name">Annual Bonus</field>
+            <field name="code">ANN_BONUS</field>
+            <field name="category">annual</field>
+            <field name="description">End of year company performance bonus.</field>
+        </record>
+    </data>
+</odoo>

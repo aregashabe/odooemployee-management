@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_offboarding_request_form" model="ir.ui.view">
+        <field name="name">hr.offboarding.request.form</field>
+        <field name="model">hr.offboarding.request</field>
+        <field name="arch" type="xml">
+            <form string="Offboarding Request">
+                <header>
+                    <button name="action_submit" string="Submit Request" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_manager_approve" string="Manager Approve" type="object" class="btn-primary" invisible="state != 'submitted'"/>
+                    <button name="action_hr_approve" string="HR Approve" type="object" class="btn-primary" invisible="state != 'hr_approval'"/>
+                    <button name="action_start_settlement" string="Proceed to Settlement" type="object" class="btn-primary" invisible="state != 'clearance'"/>
+                    <button name="action_complete_offboarding" string="Complete Offboarding" type="object" class="btn-success" invisible="state != 'settlement'"/>
+                    <button name="action_reject" string="Reject" type="object" invisible="state in ('done','rejected','canceled')"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state in ('done','canceled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,hr_approval,clearance,settlement,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="manager_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="separation_type_id" readonly="state != 'draft'"/>
+                            <field name="request_date" readonly="state != 'draft'"/>
+                            <field name="notice_period_days"/>
+                            <field name="proposed_last_day"/>
+                            <field name="approved_last_day"/>
+                            <field name="hr_officer_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Reason &amp; Notes">
+                            <field name="reason" placeholder="Provide detailed reasons for separation..."/>
+                        </page>
+                        <page string="Departmental Clearances">
+                            <field name="clearance_ids">
+                                <list editable="bottom">
+                                    <field name="department_name"/>
+                                    <field name="responsible_user_id"/>
+                                    <field name="status"/>
+                                    <field name="completion_date"/>
+                                    <button name="action_set_cleared" string="Mark Cleared" type="object" class="btn-sm btn-success" invisible="status == 'cleared'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Company Assets">
+                            <field name="asset_ids">
+                                <list editable="bottom">
+                                    <field name="asset_name"/>
+                                    <field name="serial_number"/>
+                                    <field name="is_returned"/>
+                                    <field name="condition"/>
+                                    <field name="financial_deduction"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_offboarding_request_list" model="ir.ui.view">
+        <field name="name">hr.offboarding.request.list</field>
+        <field name="model">hr.offboarding.request</field>
+        <field name="arch" type="xml">
+            <list string="Offboarding Requests" decoration-info="state == 'draft'" decoration-success="state == 'done'" decoration-danger="state == 'rejected'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="separation_type_id"/>
+                <field name="request_date"/>
+                <field name="approved_last_day"/>
+                <field name="clearance_progress" widget="progressbar"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+{
+    'name': 'BelTech Ethiopian Payroll',
+    'version': '19.0.1.0.0',
+    'category': 'Human Resources',
+    'summary': 'Ethiopian Income Tax and Pension Localization',
+    'author': 'BelTech',
+    'license': 'LGPL-3',
+    'depends': ['base', 'hr', 'hr_payroll_community',
+         'bel_hr_attendance_rules',
+        'bel_hr_leave_et',
+        'bel_hr_overtime',],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/ethiopian_tax_brackets_data.xml',
+        'data/ethiopian_pension_data.xml',
+        'data/ethiopian_salary_rules.xml',
+        'views/ethiopian_config_views.xml',
+        'views/hr_payslip_views.xml',
+    ],
+    'installable': True,
+    'application': False,
+}

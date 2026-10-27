@@ -1,0 +1,21 @@
+<data noupdate="1">
+    <record id="ethiopian_tax_bracket_1" model="ethiopian.tax.bracket">
+        <field name="name">0 - 600 ETB (Exempt)</field>
+        <field name="date_from">2024-01-01</field>
+        <field name="sequence">10</field>
+        <field name="lower_bound">0.0</field>
+        <field name="upper_bound">600.0</field>
+        <field name="tax_rate">0.0</field>
+        <field name="deduction_amount">0.0</field>
+    </record>
+    <record id="ethiopian_tax_bracket_2" model="ethiopian.tax.bracket">
+        <field name="name">601 - 1,650 ETB (10%)</field>
+        <field name="date_from">2024-01-01</field>
+        <field name="sequence">20</field>
+        <field name="lower_bound">601.0</field>
+        <field name="upper_bound">1650.0</field>
+        <field name="tax_rate">10.0</field>
+        <field name="deduction_amount">60.0</field>
+    </record>
+    <!-- Add remaining brackets up to 35%+ following standard Ethiopian schedules -->
+</data>

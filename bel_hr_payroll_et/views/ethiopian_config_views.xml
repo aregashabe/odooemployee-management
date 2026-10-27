@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- List View -->
+        <record id="view_ethiopian_tax_bracket_tree" model="ir.ui.view">
+            <field name="name">ethiopian.tax.bracket.tree</field>
+            <field name="model">ethiopian.tax.bracket</field>
+            <field name="arch" type="xml">
+                <list string="Ethiopian Tax Brackets">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="lower_bound"/>
+                    <field name="upper_bound"/>
+                    <field name="tax_rate"/>
+                    <field name="deduction_amount"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ethiopian_tax_bracket_form" model="ir.ui.view">
+            <field name="name">ethiopian.tax.bracket.form</field>
+            <field name="model">ethiopian.tax.bracket</field>
+            <field name="arch" type="xml">
+                <form string="Ethiopian Tax Bracket">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+                        <group string="Tax Bracket Thresholds">
+                            <group>
+                                <field name="lower_bound"/>
+                                <field name="upper_bound"/>
+                            </group>
+                            <group>
+                                <field name="tax_rate"/>
+                                <field name="deduction_amount"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_ethiopian_tax_bracket" model="ir.actions.act_window">
+            <field name="name">Ethiopian Tax Brackets</field>
+            <field name="res_model">ethiopian.tax.bracket</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Menu items attached directly under Payroll Configuration -->
+        <menuitem id="menu_ethiopian_payroll_config"
+                  name="Ethiopian Payroll"
+                  parent="hr_payroll_community.menu_hr_payroll_global_settings"
+                  sequence="50"/>
+
+        <menuitem id="menu_ethiopian_tax_bracket"
+                  name="Tax Brackets"
+                  parent="menu_ethiopian_payroll_config"
+                  action="action_ethiopian_tax_bracket"
+                  sequence="10"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Window Actions -->
+    <record id="action_hr_offboarding_request" model="ir.actions.act_window">
+        <field name="name">Offboarding Requests</field>
+        <field name="res_model">hr.offboarding.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hr_offboarding_settlement" model="ir.actions.act_window">
+        <field name="name">Final Settlements</field>
+        <field name="res_model">hr.offboarding.settlement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hr_offboarding_type" model="ir.actions.act_window">
+        <field name="name">Separation Types</field>
+        <field name="res_model">hr.offboarding.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Top Navigation Menu attached to HR Header -->
+    <menuitem id="menu_hr_offboarding_root" 
+              name="Offboarding" 
+              parent="hr.menu_hr_root" 
+              groups="base.group_user"
+              sequence="30"/>
+
+    <!-- Sub-menus -->
+    <menuitem id="menu_hr_offboarding_requests" 
+              name="Offboarding Cases" 
+              parent="menu_hr_offboarding_root" 
+              action="action_hr_offboarding_request" 
+              groups="base.group_user"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_offboarding_settlement" 
+              name="Final Settlements" 
+              parent="menu_hr_offboarding_root" 
+              action="action_hr_offboarding_settlement" 
+              groups="base.group_user"
+              sequence="20"/>
+
+    <menuitem id="menu_hr_offboarding_type" 
+              name="Separation Types" 
+              parent="menu_hr_offboarding_root" 
+              action="action_hr_offboarding_type" 
+              groups="base.group_user"
+              sequence="30"/>
+</odoo>

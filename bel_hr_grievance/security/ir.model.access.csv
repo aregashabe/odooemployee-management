@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bel_hr_grievance_case_user,bel.hr.grievance.case.user,model_bel_hr_grievance_case,bel_hr_grievance.group_grievance_user,1,1,1,0
+access_bel_hr_grievance_case_manager,bel.hr.grievance.case.manager,model_bel_hr_grievance_case,bel_hr_grievance.group_grievance_manager,1,1,1,1
+access_bel_hr_grievance_category_user,bel.hr.grievance.category.user,model_bel_hr_grievance_category,bel_hr_grievance.group_grievance_user,1,0,0,0
+access_bel_hr_grievance_category_manager,bel.hr.grievance.category.manager,model_bel_hr_grievance_category,bel_hr_grievance.group_grievance_manager,1,1,1,1
+access_bel_hr_grievance_stage_user,bel.hr.grievance.stage.user,model_bel_hr_grievance_stage,bel_hr_grievance.group_grievance_user,1,0,0,0
+access_bel_hr_grievance_stage_manager,bel.hr.grievance.stage.manager,model_bel_hr_grievance_stage,bel_hr_grievance.group_grievance_manager,1,1,1,1

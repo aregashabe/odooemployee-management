@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_offboarding_type_tree" model="ir.ui.view">
+        <field name="name">hr.offboarding.type.list</field>
+        <field name="model">hr.offboarding.type</field>
+        <field name="arch" type="xml">
+            <list string="Separation Types">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="notice_period_days"/>
+                <field name="requires_severance"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_offboarding_type_form" model="ir.ui.view">
+        <field name="name">hr.offboarding.type.form</field>
+        <field name="model">hr.offboarding.type</field>
+        <field name="arch" type="xml">
+            <form string="Separation Type Configuration">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="notice_period_days"/>
+                            <field name="requires_severance"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="Specify policy guidelines for this separation type..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
